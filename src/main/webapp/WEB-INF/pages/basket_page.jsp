@@ -14,7 +14,7 @@
 
     <div id="header">
 
-        <img src="/static/images/d4.png" width="150" height="150" id="rez">
+        <img src="/static/images/d4.png" width="150" height="150" id="rez" align="left">
         <p >Basket of Orders</p>
     </div>
     <div id="content">
@@ -46,7 +46,6 @@
             <tr>
                 <td></td>
                 <td><b>User</b></td>
-                <td><b>Order</b></td>
                 <td><b>Date</b></td>
                 <td><b>Type</b></td>
                 <td><b>Brand</b></td>
@@ -59,7 +58,6 @@
                 <tr>
                     <td><input type="checkbox" name="toDelete[]" value="${basketOrder.id}" id="checkbox_${basketOrder.id}"/></td>
                     <td>${basketOrder.customUser.login}</td>
-                    <td>${basketOrder.order.id}</td>
                     <td>${basketOrder.order.date}</td>
                     <c:choose>
                         <c:when test="${basketOrder.type ne null}">
@@ -95,24 +93,26 @@
 </div>
 
 
-    <div id="login">
-            <div align="center">
-                <h3>Your login is: ${login}</h3>
+<%--<div id="login">--%>
+    <%--<div align="center">--%>
+        <%--<h3>Your login is: ${login}</h3>--%>
 
-                <c:url value="/update" var="updateUrl" />
-                <form action="${updateUrl}" method="POST" >
-                    E-mail:<br/><input type="text" name="email" value="${email}" /><br/>
-                    Phone:<br/><input type="text" name="phone" value="${phone}" /><br/>
-                    <input type="submit" value="Update" />
+        <%--<c:url value="/update" var="updateUrl" />--%>
+        <%--<form action="${updateUrl}" method="POST" >--%>
+            <%--E-mail:<br/><input type="text" name="email" value="${email}" /><br/>--%>
+            <%--Phone:<br/><input type="text" name="phone" value="${phone}" /><br/>--%>
+            <%--<input type="submit" value="Update" />--%>
 
-                    <c:url value="/logout" var="logoutUrl" />
-                    <h4>Click to  <a href="${logoutUrl}">logout</a></h4>
+        <%--</form>--%>
 
-                </form>
-            </div>
+        <%--<c:url value="/logout" var="logoutUrl" />--%>
+        <%--<form action="${logoutUrl}" method="POST" >--%>
+            <%--<input type="submit" value="LogOut" />--%>
+        <%--</form>--%>
+    <%--</div>--%>
 
 
-    </div>
+<%--</div>--%>
 
 
 <script>

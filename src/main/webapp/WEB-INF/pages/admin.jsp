@@ -14,8 +14,11 @@
 
     <div id="header">
 
-        <img src="/static/images/d4.png" width="150" height="150" id="rez">
-        <p >Wheels and Discs</p>Secrets page
+        <img src="/static/images/d4.png" width="150" height="150" id="rez" align="left">
+        <p >Wheels and Discs<br><div align="center"  ><h1>Hello ${login}</h1></div></p>
+
+
+
     </div>
     <div id="content">
 
@@ -31,21 +34,27 @@
                         <li><button type="button" id="add_product" class="btn btn-default navbar-btn">Add product</button></li>
 
                         <li><button type="button" id="delete_product" class="btn btn-default navbar-btn">Delete product</button></li>
-                        <li><button type="button" id="order_product" class="btn btn-default navbar-btn">Order product</button></li>
+                        <%--<li><button type="button" id="order_product" class="btn btn-default navbar-btn">Order product</button></li>--%>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Types <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="/">Default</a></li>
+                                <li><a href="/admin">All</a></li>
                                 <c:forEach items="${types}" var="type">
-                                    <li><a href="/type/${type.id}">${type.name}</a></li>
+                                    <li><a href="/admin/type/${type.id}">${type.name}</a></li>
                                 </c:forEach>
                             </ul>
                         </li>
 
+
+                        <li> <c:url value="/logout" var="logoutUrl" />
+                            <form action="${logoutUrl}" method="POST" >
+                                <input class="btn btn-default navbar-btn" type="submit" value="LogOut" />
+                            </form></li>
+
                     </ul>
 
                     <button type="button" id="basket" class="btn btn-default navbar-btn">Basket of Orders</button>
-                    <button type="button" id="basket2" class="btn btn-default navbar-btn">Basket</button>
+                    <%--<button type="button" id="basket2" class="btn btn-default navbar-btn">Basket</button>--%>
 
 
                 </div><!-- /.navbar-collapse -->
@@ -91,7 +100,7 @@
                 </c:if>
                 <c:if test="${byTypePages ne null}">
                     <c:forEach var="i" begin="1" end="${byTypePages}">
-                        <li><a href="/type/${typeId}?page=<c:out value="${i - 1}"/>"><c:out value="${i}"/></a></li>
+                        <li><a href="/admin/type/${typeId}?page=<c:out value="${i - 1}"/>"><c:out value="${i}"/></a></li>
                     </c:forEach>
                 </c:if>
             </ul>
@@ -102,24 +111,26 @@
 </div>
 
 
-<div id="login">
-    <div align="center">
-        <h3>Your login is: ${login}</h3>
+<%--<div id="login">--%>
+    <%--<div align="center">--%>
+        <%--<h3>Your login is: ${login}</h3>--%>
 
-        <c:url value="/update" var="updateUrl" />
-        <form action="${updateUrl}" method="POST" >
-            E-mail:<br/><input type="text" name="email" value="${email}" /><br/>
-            Phone:<br/><input type="text" name="phone" value="${phone}" /><br/>
-            <input type="submit" value="Update" />
+        <%--<c:url value="/update" var="updateUrl" />--%>
+        <%--<form action="${updateUrl}" method="POST" >--%>
+            <%--E-mail:<br/><input type="text" name="email" value="${email}" /><br/>--%>
+            <%--Phone:<br/><input type="text" name="phone" value="${phone}" /><br/>--%>
+            <%--<input type="submit" value="Update" />--%>
 
-            <c:url value="/logout" var="logoutUrl" />
-            <h4>Click to  <a href="${logoutUrl}">logout</a></h4>
+        <%--</form>--%>
 
-        </form>
-    </div>
+        <%--<c:url value="/logout" var="logoutUrl" />--%>
+        <%--<form action="${logoutUrl}" method="POST" >--%>
+            <%--<input type="submit" value="LogOut" />--%>
+        <%--</form>--%>
+    <%--</div>--%>
 
 
-</div>
+<%--</div>--%>
 
 
 <script>

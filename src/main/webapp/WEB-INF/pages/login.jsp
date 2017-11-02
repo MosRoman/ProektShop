@@ -14,26 +14,59 @@
 
             <div id="header">
 
-                <img src="/static/images/d4.png" width="150" height="150" id="rez" alt="clock">
+                <img src="/static/images/d4.png" width="150" height="150" id="rez" alt="clock" align="left">
                 <p >Wheels and Discs</p>
+
             </div>
                 <div id="content">
-                                <div align="center">
+
+
+                    <nav class="navbar navbar-default">
+
+                        <div class="container-fluid">
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                <ul id="groupList" class="nav navbar-nav"  >
+
+
+
                                     <c:url value="/j_spring_security_check" var="loginUrl" />
 
+                                    <li><form action="${loginUrl}" method="POST">
+                                            Login:   <input class="btn btn-default navbar-btn" type="text" name="j_login" size="10">
+                                         Password: <input class="btn btn-default navbar-btn" type="password" name="j_password" size="10">
+                                        <input class="btn btn-default navbar-btn" type="submit" value="Enter" />
 
-                                    <form action="${loginUrl}" method="POST">
+                                    </form></li>
+                                    <li><input  class="btn btn-default navbar-btn" type="submit"   value="Register" onClick='location.href="/register"'></li>
+
+                                       <%--<button type="button" id="register" class="btn btn-default navbar-btn">Register</button> </li>--%>
+                                </ul>
 
 
-                                        <c:if test="${param.error ne null}">
-                                            <p>Wrong login or password!</p>
-                                        </c:if>
 
-                                        <c:if test="${param.logout ne null}">
 
-                                        </c:if>
-                                    </form>
-                                </div>
+                            </div><!-- /.navbar-collapse -->
+                        </div><!-- /.container-fluid -->
+                    </nav>
+                    <div align="center">
+                        <c:url value="/j_spring_security_check" var="loginUrl" />
+
+
+                        <form action="${loginUrl}" method="POST">
+
+
+                            <c:if test="${param.error ne null}">
+                               <p> Wrong login or password!</p>
+                            </c:if>
+
+                            <c:if test="${param.logout ne null}">
+
+                            </c:if>
+                        </form>
+                    </div>
+
+
 
                     <table class="table table-striped">
                         <thead>
@@ -83,32 +116,14 @@
                 </div>
     </div>
 
-<div id="login">
-    <div align="center">
-        <c:url value="/j_spring_security_check" var="loginUrl" />
 
-
-
-        <form action="${loginUrl}" method="POST">
-            Login:<br/><input type="text" name="j_login"><br/>
-            Password:<br/><input type="password" name="j_password"><br/>
-            <input type="submit" value="Enter" />
-
-            <p><a href="/register"><h3>Register new user</h3></a></p>
-
-
-
-            <c:if test="${param.logout ne null}">
-
-            </c:if>
-        </form>
-    </div>
-
-
-</div>
 
 <script>
     $('.dropdown-toggle').dropdown();
+
+    $('#register').click(function(){
+        window.location.href="/register";
+    });
 
     $('#add_product').click(function(){
         window.location.href='/product_add_page';

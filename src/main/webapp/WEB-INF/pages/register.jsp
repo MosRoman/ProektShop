@@ -9,31 +9,35 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </head>
 <body>
-<div id="wrapper">
+    <div id="wrapper">
 
-    <div id="header">
+                        <div id="header">
 
-        <img src="/static/images/d4.png" width="150" height="150" id="rez" alt="clock">
-        <p >Wheels and Discs</p>
+                                <img src="/static/images/d4.png" width="150" height="150" id="rez" alt="clock" align="left">
+                                <p >Wheels and Discs</p>
+                        </div>
+                <div id="content">
+
+
+                            <div align="center">
+                                <c:url value="/newuser" var="regUrl" />
+
+                                <form action="${regUrl}" method="POST">
+                                    Login:<br/><input class="btn btn-default navbar-btn" type="text" name="login"><br/>
+                                    Password:<br/><input class="btn btn-default navbar-btn" type="password" name="password"><br/>
+                                    E-mail:<br/><input class="btn btn-default navbar-btn" type="text" name="email"><br/>
+                                    Phone:<br/><input class="btn btn-default navbar-btn" type="text" name="phone"><br/>
+                                    <input class="btn btn-default navbar-btn" type="submit" value="Register" />
+
+                                    <c:if test="${exists ne null}">
+                                        <p>User already exists!</p>
+                                    </c:if>
+                                </form>
+
+                            </div>
+                    <input type="button"  class="btn btn-default navbar-btn" value="Go to Main Menu" onClick='location.href="/"'>
+                </div>
+
     </div>
-    <div id="content">
-
-            <div align="center">
-                <c:url value="/newuser" var="regUrl" />
-
-                <form action="${regUrl}" method="POST">
-                    Login:<br/><input type="text" name="login"><br/>
-                    Password:<br/><input type="password" name="password"><br/>
-                    E-mail:<br/><input type="text" name="email"><br/>
-                    Phone:<br/><input type="text" name="phone"><br/>
-                    <input type="submit" />
-
-                    <c:if test="${exists ne null}">
-                        <p>User already exists!</p>
-                    </c:if>
-                </form>
-            </div>
-            </div>
-            </div>
 </body>
 </html>

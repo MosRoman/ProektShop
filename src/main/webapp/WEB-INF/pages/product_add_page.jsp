@@ -12,11 +12,11 @@
 
         <div id="header">
 
-            <img src="/static/images/d4.png" width="150" height="150" id="rez">
+            <img src="/static/images/d4.png" width="150" height="150" id="rez" align="left">
             <p >Wheels and Discs</p>
         </div>
         <div class="container">
-            <input type="button"  class="btn btn-default navbar-btn" value="Go to Main Menu" onClick='location.href="/"'>
+
             <form role="form" class="form-horizontal" action="/product/add" method="post">
                         <h3>New product</h3>
                 <select class="selectpicker form-control form-group" name="type">
@@ -29,6 +29,7 @@
                         <input class="form-control form-group" type="text" name="diametr" placeholder="Diametr">
                         <input class="form-control form-group" type="text" name="price" placeholder="Price">
                     <input type="submit" class="btn btn-primary" value="Add">
+                <input type="button"  class="btn btn-default navbar-btn" value="Go to Main Menu" onClick='location.href="/"'>
             </form>
         </div>
 
@@ -37,5 +38,27 @@
         </script>
 
     </div>
+
+    <%--<div id="login">--%>
+        <%--<div align="center">--%>
+            <%--<h3>Your login is: ${login}</h3>--%>
+
+            <%--<c:url value="/update" var="updateUrl" />--%>
+            <%--<form action="${updateUrl}" method="POST" >--%>
+                <%--E-mail:<br/><input type="text" name="email" value="${email}" /><br/>--%>
+                <%--Phone:<br/><input type="text" name="phone" value="${phone}" /><br/>--%>
+                <%--<input type="submit" value="Update" />--%>
+
+            <%--</form>--%>
+
+            <%--<c:url value="/logout" var="logoutUrl" />--%>
+            <%--<form action="${logoutUrl}" method="POST" >--%>
+                <%--<input type="submit" value="LogOut" />--%>
+            <%--</form>--%>
+        <%--</div>--%>
+
+
+    <%--</div>--%>
+
     </body>
 </html>

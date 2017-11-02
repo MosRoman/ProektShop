@@ -15,8 +15,8 @@
 
         <div id="header">
 
-            <img src="/static/images/d4.png" width="150" height="150" id="rez">
-            <p >Wheels and Discs</p>
+            <img src="/static/images/d4.png" width="150" height="150" id="rez" align="left">
+            <p >Wheels and Discs<br><div align="center"  ><h1>Hello ${login}</h1></div></p>
         </div>
             <div id="content">
 
@@ -31,16 +31,36 @@
                                 <%--<li><button type="button" id="add_product" class="btn btn-default navbar-btn">Add product</button></li>--%>
 
                                 <%--<li><button type="button" id="delete_product" class="btn btn-default navbar-btn">Delete product</button></li>--%>
-                                <li><button type="button" id="order_product" class="btn btn-default navbar-btn">Order product</button></li>
+                                <%--<li><button type="button" id="order_product" class="btn btn-default navbar-btn">Order product</button></li>--%>
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Types <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="/">Default</a></li>
+                                        <li><a href="/">All</a></li>
                                         <c:forEach items="${types}" var="type">
                                             <li><a href="/type/${type.id}">${type.name}</a></li>
                                         </c:forEach>
                                     </ul>
                                 </li>
+
+                                <li class="dropdown" >
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Data <span class="caret"></span></a>
+                                    <ul class="dropdown-menu" >
+                                          <c:url value="/update" var="updateUrl" />
+                                            <form action="${updateUrl}" method="POST" >
+                                        <li> E-mail:</li>
+                                                <li><input class="btn btn-default navbar-btn" size="10" type="text" name="email" value="${email}" /></li>
+                                                <li>Phone:</li>
+                                                <li><input class="btn btn-default navbar-btn" size="10" type="text" name="phone" value="${phone}" /></li>
+                                                <li><input class="btn btn-default navbar-btn" type="submit" value="Update"  /></li>
+
+                                            </form>
+                                    </ul>
+                                </li>
+
+                                <li> <c:url value="/logout" var="logoutUrl" />
+                                    <form action="${logoutUrl}" method="POST" >
+                                        <input class="btn btn-default navbar-btn" type="submit" value="LogOut" />
+                                    </form></li>
 
                             </ul>
 
@@ -60,12 +80,14 @@
                         <td><b>Brand</b></td>
                         <td><b>Diametr</b></td>
                         <td><b>Price($ USA)</b></td>
-
+                        <td></td>
                     </tr>
                     </thead>
                     <c:forEach items="${products}" var="product">
                         <tr>
-                            <td><input type="checkbox" name="toDelete[]" value="${product.id}" id="checkbox_${product.id}"/></td>
+                            <td>
+                                <%--<input type="checkbox" name="toDelete[]" value="${product.id}" id="checkbox_${product.id}"/>--%>
+                            </td>
                             <c:choose>
                                 <c:when test="${product.type ne null}">
                                     <td>${product.type.name}</td>
@@ -77,6 +99,17 @@
                             <td>${product.brand}</td>
                             <td>${product.diametr}</td>
                             <td>${product.price}</td>
+                            <td>
+                                <%--<button type="button" value="${product.id}" id="order" class="btn btn-default navbar-btn">Order</button>--%>
+                                    <c:url value="/order" var="orderGoods" />
+                                    <form action="${orderGoods}" method="POST"  >
+                                        <button type="submit" id="order" value="${product.id}" name ="goods" class="btn btn-default navbar-btn" >Order</button>
+
+
+                                        <%--<input class="btn btn-default navbar-btn" type="submit" value="Order" />--%>
+
+                                    </form>
+                            </td>
 
                         </tr>
                     </c:forEach>
@@ -102,24 +135,26 @@
 
 
 
-<div id="login">
-    <div align="center">
-        <h3>Your login is: ${login}</h3>
+    <%--<div id="login">--%>
+        <%--<div align="center">--%>
+            <%--<h3>Your login is: ${login}</h3>--%>
 
-        <c:url value="/update" var="updateUrl" />
-        <form action="${updateUrl}" method="POST" >
-            E-mail:<br/><input type="text" name="email" value="${email}" /><br/>
-            Phone:<br/><input type="text" name="phone" value="${phone}" /><br/>
-            <input type="submit" value="Update" />
+            <%--<c:url value="/update" var="updateUrl" />--%>
+            <%--<form action="${updateUrl}" method="POST" >--%>
+                <%--E-mail:<br/><input type="text" name="email" value="${email}" /><br/>--%>
+                <%--Phone:<br/><input type="text" name="phone" value="${phone}" /><br/>--%>
+                <%--<input type="submit" value="Update" />--%>
 
-            <c:url value="/logout" var="logoutUrl" />
-            <h4>Click to  <a href="${logoutUrl}">logout</a></h4>
+            <%--</form>--%>
 
-        </form>
-    </div>
+            <%--<c:url value="/logout" var="logoutUrl" />--%>
+            <%--<form action="${logoutUrl}" method="POST" >--%>
+                <%--<input type="submit" value="LogOut" />--%>
+            <%--</form>--%>
+        <%--</div>--%>
 
 
-</div>
+    <%--</div>--%>
 
 
 <script>
@@ -158,6 +193,7 @@
             window.location.reload();
         });
     });
+
 
 </script>
 
